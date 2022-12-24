@@ -1,0 +1,25 @@
+version: "3"
+services:
+  web:
+    # build: .
+    # this will not work because it looks for the Dockerfile
+    # in the working directory and we are using a Dockerfile.dev instead
+    # so we will specify what Dockerfile we want to use:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    # this way we overwrite the Dockerfile.dev start command
+    command: ["npm", "run", "test"]
