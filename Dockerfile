@@ -5,7 +5,6 @@
 # 'node:16-alpine' is the 1st base image of this Dockerfile
 FROM node:16-alpine as builder
 WORKDIR '/app'
-# COPY package.json .
 COPY package.json .
 RUN npm install
 COPY . .
@@ -17,7 +16,7 @@ RUN npm run build
 # https://hub.docker.com/_/nginx 
 # this is too an example of a 2nd base image
 FROM nginx
-# informative for us but needed for AWS to know which port will be exposed
+# to document the containers that the port exposes. needed for AWS to know which port will be exposed
 EXPOSE 80
 # copy over the result of 'npm run build', everything else is left behind
 COPY --from=builder /app/build /usr/share/nginx/html
