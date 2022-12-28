@@ -1,12 +1,12 @@
-language: generic
-
 # tell 'travis' we need a copy of docker running
 sudo: required
+language: generic
+
 services:
   - docker
 
 # commands that execute before our tests are run
-# build our image using 'Dockerfile'.dev
+# build our image using 'Dockerfile.dev'
 before_install:
   - docker build -t cviejo18/docker-react -f Dockerfile.dev .
 
@@ -39,4 +39,4 @@ deploy:
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: "$AWS_SECRET_KEY"
+  secret_access_key: $AWS_SECRET_KEY
