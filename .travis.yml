@@ -27,13 +27,13 @@ deploy:
   # http://dockerreact-env.eba-fmbmnfye.us-east-2.elasticbeanstalk.com/
   region: "us-east-2"
   # the name we used in the AWS > elastic beanstalk instance creation
-  app: "docker-react"
+  app: "docker"
   # the environtment name generated from AWS > elastic beanstalk instance
-  env: "Dockerreact-env"
+  env: "docker-env"
   # AWS services> search 's3' bucket > elasticbeanstalk-us-east-2-700014740564
   bucket_name: "elasticbeanstalk-us-east-2-700014740564"
   # the name we used in the AWS > elastic beanstalk instance creation
-  bucket_path: "docker-react"
+  bucket_path: "docker"
   # any time we push new code only to the 'master' branch,
   # not the feature branch, then deploy
   on:
